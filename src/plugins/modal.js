@@ -153,6 +153,7 @@ export class Modal extends Plugin {
     createButtons() {
         var buttonsConfig = this.config.get('buttons', []);
         var modal = this;
+        var buttonRow = Bulma.findOrCreateElement('.buttons', modal.footer);
 
         Bulma.each(buttonsConfig, function(buttonConfig) {
             var button = Bulma.createElement('button', buttonConfig.classes);
@@ -162,7 +163,7 @@ export class Modal extends Plugin {
                 buttonConfig.onClick(event);
             });
 
-            modal.footer.appendChild(button);
+            buttonRow.appendChild(button);
         });
     }
 

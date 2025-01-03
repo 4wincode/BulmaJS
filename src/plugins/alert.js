@@ -80,6 +80,7 @@ export class Alert extends Modal {
      */
     createButtons() {
         var defaultButtonOptions = { close: true, destroy: true, onClick: function() {} };
+        var buttonRow = Bulma.findOrCreateElement('.buttons', this.footer);
 
         var confirmOptions = this.config.get('confirm');
         if(typeof confirmOptions === 'string') {
@@ -103,7 +104,7 @@ export class Alert extends Modal {
                 this.destroy();
             }
         });
-        this.footer.appendChild(confirmButton);
+        buttonRow.appendChild(confirmButton);
 
         if(this.config.get('cancel')) {
             var cancelOptions = this.config.get('cancel');
@@ -128,7 +129,7 @@ export class Alert extends Modal {
                     this.destroy();
                 }
             });
-            this.footer.appendChild(cancelButton);
+            buttonRow.appendChild(cancelButton);
         }
     }
 }
